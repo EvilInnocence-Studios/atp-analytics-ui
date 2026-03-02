@@ -12,14 +12,14 @@ export const LineChartComponent = overridable(({
         {css && <style>{css}</style>}
         {label && <h2 className={classes.label}>{label}</h2>}
         <ResponsiveContainer width="100%" height={300}>
-            <LineChart className={clsx(className, classes.chart)} data={results}>
+            <LineChart className={clsx(className, classes.chart)} data={results} >
                 <XAxis dataKey="label" />
 
                 <Line dataKey="views" yAxisId="views" type="monotone" stroke="#8884d8" />
-                <YAxis yAxisId="views" orientation="left" />
+                <YAxis yAxisId="views" orientation="left" label={{ value: "Views", angle: -90, position: "insideLeft" }} />
 
                 <Line dataKey="uniqueUsers" yAxisId="users" type="monotone" stroke="#82ca9d" />
-                <YAxis yAxisId="users" orientation="right" />
+                <YAxis yAxisId="users" orientation="right" label={{ value: "Unique Users", angle: 90, position: "insideRight" }} />
 
                 <Tooltip />
                 <Legend />
