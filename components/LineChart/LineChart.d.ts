@@ -1,12 +1,12 @@
 import { AggregateResult, AnalyticsOptions } from "@analytics-shared/types";
 
-export declare interface IChartProps {
+export declare interface ILineChartProps {
     results: AggregateResult[];
     isLoading: boolean;
 }
 
 // What gets passed into the component from the parent as attributes
-export declare interface IChartInputProps {
+export declare interface ILineChartInputProps {
     className?: string;
     css?: string;
     classes?: any;
@@ -16,4 +16,4 @@ export declare interface IChartInputProps {
     options: AnalyticsOptions;
 }
 
-export type ChartProps = IChartInputProps & IChartProps;
+export type LineChartProps = ILineChartInputProps & ILineChartProps;

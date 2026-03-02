@@ -5,12 +5,12 @@ import { useLoaderAsync } from "@core/lib/useLoader";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { useEffect, useState } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { ChartComponent } from "./Chart.component";
-import { ChartProps, IChartInputProps, IChartProps } from "./Chart.d";
-import { ChartPropEditor } from "./Chart.props";
+import { BarChartComponent } from "./BarChart.component";
+import { BarChartProps, IBarChartInputProps, IBarChartProps } from "./BarChart.d";
+import { BarChartPropEditor } from "./BarChart.props";
 import icon from './icon.svg';
 
-const injectChartProps = createInjector(({ options }: IChartInputProps): IChartProps => {
+const injectBarChartProps = createInjector(({ options }: IBarChartInputProps): IBarChartProps => {
     const [results, setResults] = useState<AggregateResult[]>([]);
     const loader = useLoaderAsync();
 
@@ -21,20 +21,20 @@ const injectChartProps = createInjector(({ options }: IChartInputProps): IChartP
     return { results, isLoading: loader.isLoading };
 });
 
-const connect = inject<IChartInputProps, ChartProps>(mergeProps(
-    injectChartProps,
+const connect = inject<IBarChartInputProps, BarChartProps>(mergeProps(
+    injectBarChartProps,
 ));
-export const connectChart = connect;
+export const connectBarChart = connect;
 
-export const Chart = withLayoutMetadata(
-    overridable<IChartInputProps>(connect(ChartComponent)),
+export const BarChart = withLayoutMetadata(
+    overridable<IBarChartInputProps>(connect(BarChartComponent)),
     {
-        name: "Chart",
-        displayName: "Chart",
+        name: "BarChart",
+        displayName: "BarChart",
         category: "",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
-        propEditor: ChartPropEditor,
+        propEditor: BarChartPropEditor,
     }
 );
