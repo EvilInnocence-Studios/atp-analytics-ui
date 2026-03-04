@@ -10,20 +10,30 @@ export const LineChartComponent = overridable(({
     classes = styles, className, css,
 }: LineChartProps) => <Spin spinning={isLoading}>
         {css && <style>{css}</style>}
-        {label && <h2 className={classes.label}>{label}</h2>}
-        <ResponsiveContainer width="100%" height={300}>
-            <LineChart className={clsx(className, classes.chart)} data={results} >
-                <XAxis dataKey="label" tickFormatter={renderTick} />
+        <div className={clsx(className, classes.chart)}>
+            {label && <h2 className={classes.label}>{label}</h2>}
+            <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={results} >
+                    <XAxis dataKey="label" tickFormatter={renderTick} />
 
-                <Line dataKey="views" yAxisId="views" type="monotone" stroke="#8884d8" />
-                <YAxis yAxisId="views" orientation="left" label={{ value: "Views", angle: -90, position: "insideLeft" }} />
+                    <Line name="Views" dataKey="views" yAxisId="views" type="monotone" stroke="#8884d8" />
+                    <YAxis
+                        yAxisId="views"
+                        orientation="left"
+                        stroke="#8884d8"
+                    />
 
-                <Line dataKey="uniqueUsers" yAxisId="users" type="monotone" stroke="#82ca9d" />
-                <YAxis yAxisId="users" orientation="right" label={{ value: "Unique Users", angle: 90, position: "insideRight" }} />
+                    <Line name="Users" dataKey="uniqueUsers" yAxisId="users" type="monotone" stroke="#82ca9d" />
+                    <YAxis
+                        yAxisId="users"
+                        orientation="right"
+                        stroke="#82ca9d"
+                    />
 
-                <Tooltip />
-                <Legend />
-            </LineChart>
-        </ResponsiveContainer>
+                    <Tooltip />
+                    <Legend />
+                </LineChart>
+            </ResponsiveContainer>
+        </div>
     </Spin>);
 
