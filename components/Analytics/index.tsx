@@ -6,7 +6,6 @@ export const Analytics: React.FC = () => {
     const location = useLocation();
 
     useEffect(() => {
-        console.log("Analytics tracking");
         const screen = window.screen;
 
         const info = {
@@ -16,10 +15,8 @@ export const Analytics: React.FC = () => {
             screenWidth: screen.width,
             screenHeight: screen.height,
         };
-        console.log(info);
-        services().analytics.track(info)
-            .then((res: any) => console.log("Analytics track response:", res))
-            .catch((err: any) => console.error("Analytics track error:", err));
+
+        services().analytics.track(info).then(() => console.log(""));
     }, [location]);
 
     return null;
