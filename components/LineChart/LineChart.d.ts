@@ -1,4 +1,5 @@
 import { AggregateResult, AnalyticsOptions } from "@analytics-shared/types";
+import { XAxisTickContentProps } from "recharts";
 
 export declare interface ILineChartProps {
     results: AggregateResult[];
@@ -14,6 +15,7 @@ export declare interface ILineChartInputProps {
     __layoutId?: string;
     label: string;
     options: AnalyticsOptions;
+    renderTick?: (label: string | number | Date) => string;
 }
 
 export type LineChartProps = ILineChartInputProps & ILineChartProps;
