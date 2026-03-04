@@ -14,7 +14,10 @@ export const LineChartComponent = overridable(({
             {label && <h2 className={classes.label}>{label}</h2>}
             <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={results} >
-                    <XAxis dataKey="label" tickFormatter={renderTick} />
+                    <XAxis
+                        dataKey="label"
+                        tickFormatter={renderTick}
+                    />
 
                     <Line name="Views" dataKey="views" yAxisId="views" type="monotone" stroke="#8884d8" />
                     <YAxis
