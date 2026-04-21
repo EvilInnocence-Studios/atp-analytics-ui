@@ -10,7 +10,7 @@ import { BarChartProps, IBarChartInputProps, IBarChartProps } from "./BarChart.d
 import { BarChartPropEditor } from "./BarChart.props";
 import icon from './icon.svg';
 
-const injectBarChartProps = createInjector(({ options }: IBarChartInputProps): IBarChartProps => {
+const injectBarChartProps = createInjector(({ options, pageSize, sortBy }: IBarChartInputProps): IBarChartProps => {
     const [results, setResults] = useState<AggregateResult[]>([]);
     const loader = useLoaderAsync();
 
@@ -18,7 +18,7 @@ const injectBarChartProps = createInjector(({ options }: IBarChartInputProps): I
         loader(() => services().analytics.get(options).then(setResults));
     }, [options]);
 
-    return { results, isLoading: loader.isLoading };
+    return { results, isLoading: loader.isLoading, pageSize, sortBy };
 });
 
 const connect = inject<IBarChartInputProps, BarChartProps>(mergeProps(

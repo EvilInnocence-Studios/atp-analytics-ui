@@ -1,1 +1,41 @@
 @use "@styles/globals.module.scss";
+
+.chart {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .label {
+            margin-bottom: 0;
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .sortLabel {
+                font-size: 0.875rem;
+                color: #666;
+            }
+        }
+    }
+
+    .pagination {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+    }
+}
