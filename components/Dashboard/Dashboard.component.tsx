@@ -1,5 +1,6 @@
 import { overridable } from "@core/lib/overridable";
-import { Col, DatePicker, Row, Typography } from "antd";
+import { Col, Row, Typography } from "antd";
+import { DatePicker } from "@core/components/DatePicker";
 import { BarChart } from "../BarChart";
 import { LineChart } from "../LineChart";
 import { DashboardProps } from "./Dashboard.d";
@@ -16,7 +17,8 @@ export const DashboardComponent = overridable(({dates, setDates}:DashboardProps)
         <div style={{ marginBottom: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography.Title level={2} style={{ margin: 0 }}>Analytics Dashboard</Typography.Title>
             <DatePicker.RangePicker
-                onChange={(_dates, dateStrings) => setDates(dateStrings[0] && dateStrings[1] ? [dateStrings[0], dateStrings[1]] : null)}
+                value={dates}
+                onChange={setDates}
             />
         </div>
         <Row gutter={[24, 24]}>
